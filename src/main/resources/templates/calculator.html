@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate vacation pay</title>
+</head>
+<body>
+<h1>Calculate vacation pay</h1>
+<form method="get" action="/calculate" th:object="${vacationRequest}">
+  <label for="salary">Salary:</label>
+  <input type="number" id="salary" name="salary" required th:value="${salary}"><br>
+  <label for="vacationDays">Number of days off:</label>
+  <input type="number" id="vacationDays" name="vacationDays" required th:value="${vacationDays}"><br><br>
+  <button type="submit">submit</button>
+</form>
+<br>
+
+<div th:if="${vacationPay != null}">
+    <p>Your vacation pay is: <span th:text="${vacationPay}"></span></p>
+</div>
+</body>
+</html>
