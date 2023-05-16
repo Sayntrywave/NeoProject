@@ -16,10 +16,9 @@ public record VacationRequest(
 
     public long calculateVacationPay() {
         long vacationDays = firstDayOfVacation.datesUntil(lastDayOfVacation.plusDays(1))
-                .filter(localDate ->
-                        !(localDate.getDayOfWeek() == DayOfWeek.SATURDAY)
-                                && !(localDate.getDayOfWeek() == DayOfWeek.SUNDAY)
-                                && !(HolidayService.isHoliday(localDate)))
+                .filter(localDate -> !(localDate.getDayOfWeek() == DayOfWeek.SATURDAY)
+                        && !(localDate.getDayOfWeek() == DayOfWeek.SUNDAY)
+                        && !(HolidayService.isHoliday(localDate)))
                 .count();
         return Math.round(salary / 365 * vacationDays);
     }
