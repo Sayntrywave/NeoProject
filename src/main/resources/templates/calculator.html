@@ -24,6 +24,7 @@
         }
 
         .error {
+            color: red;
             margin: 5px 0;
         }
 
@@ -36,17 +37,25 @@
         <div>
             <input type="number" class="form-control" step="0.01" id="salary" placeholder="Salary"
                    th:field="*{salary}"/>
-            <div class="error" style="color:red" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">error
+            <div class="error" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">error
             </div>
         </div>
+
         <div>
-            <input class="form-control" type="number" id="vacationDays" placeholder="Number of days off"
-                   th:field="*{vacationDays}"/>
-            <div class="error" style="color:red" th:if="${#fields.hasErrors('vacationDays')}"
-                 th:errors="*{vacationDays}">error
+            <label for="firstDayOfVacation">from</label>
+            <input class="form-control" type="date" id="firstDayOfVacation" name="firstDayOfVacation"
+                   th:field="*{firstDayOfVacation}"/>
+            <div class="error" th:if="${#fields.hasErrors('firstDayOfVacation')}"
+                 th:errors="*{firstDayOfVacation}">error
+            </div>
+            <label for="vacationDayEnd">to</label>
+            <input class="form-control" type="date" id="vacationDayEnd" name="lastDayOfVacation"
+                   th:field="*{lastDayOfVacation}"/>
+            <div class="error" th:if="${#fields.hasErrors('lastDayOfVacation')}"
+                 th:errors="*{lastDayOfVacation}">error
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">submit</button>
+            <button class="btn btn-primary" type="submit">submit</button>
     </form>
     <div th:if="${vacationPay != null}">
         <p>Your vacation pay is: <span th:text="${vacationPay}"></span></p>
